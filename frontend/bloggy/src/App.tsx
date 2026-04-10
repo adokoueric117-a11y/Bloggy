@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom"
 import Navbar from "./components/Navbar"
-import Articles from "./Pages/Articles"
 
 export default function App() {
   return (
@@ -8,7 +7,7 @@ export default function App() {
       <nav><Navbar/></nav>
 
       <main><Outlet/></main>
-      
+
     </div>
   )
 }

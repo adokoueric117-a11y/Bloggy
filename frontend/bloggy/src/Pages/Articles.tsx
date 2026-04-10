@@ -40,6 +40,7 @@ export default function Articles() {
       <p className="text-[#006a4e] font-black italic animate-pulse">Récupération des actus 228...</p>
     </div>
   );
+  if(error){ <p>Erreur serveur</p> }
 
   return (
     <div className="max-w-7xl mx-auto p-6 md:p-12">
@@ -139,8 +140,8 @@ export default function Articles() {
               
               {selectedArticle.image && (
                 <div className="relative mb-10 group">
-                  <div className="absolute inset-0 bg-[#ffce00] rounded-[2rem] rotate-2 group-hover:rotate-1 transition-transform -z-10"></div>
-                  <img src={selectedArticle.image} alt="" className="w-full h-72 md:h-96 object-cover rounded-[2rem] shadow-xl" />
+                  <div className="absolute inset-0 bg-[#ffce00] rounded-4xl rotate-2 group-hover:rotate-1 transition-transform -z-10"></div>
+                  <img src={selectedArticle.image} alt="" className="w-full h-72 md:h-96 object-cover rounded-4xl shadow-xl" />
                 </div>
               )}
               

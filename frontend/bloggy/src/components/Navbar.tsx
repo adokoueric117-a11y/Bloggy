@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import { Menu, X, LogIn } from 'lucide-react'; // Importation des icônes
+import { Menu, X, LogIn } from 'lucide-react';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,21 +12,23 @@ export default function Navbar() {
   ];
 
   return (
-    <nav className="bg-white border-b border-gray-100 px-6 py-4 relative">
+    <nav className="bg-white border-b-4 border-[#006a4e] px-6 py-4 relative shadow-sm">
       <div className="flex justify-between items-center max-w-7xl mx-auto">
-        {/* Logo */}
-        <Link to="/" className="text-2xl font-black tracking-tighter text-blue-600">
-          BLOGGY
+        {/* Logo - Utilisation du Rouge et Vert */}
+        <Link to="/" className="text-2xl font-black tracking-tighter flex items-center gap-1">
+          <span className="text-[#d21034]">BLO</span>
+          <span className="text-[#006a4e]">GGY</span>
+          <div className="w-2 h-2 bg-[#ffce00] rounded-full ml-1 animate-pulse"></div>
         </Link>
 
         {/* Menu Desktop */}
-        <ul className="hidden md:flex items-center gap-10 text-gray-700 font-semibold">
+        <ul className="hidden md:flex items-center gap-10 text-gray-800 font-bold">
           {navLinks.map(function(link) {
             return (
               <li key={link.path}>
                 <Link 
                   to={link.path} 
-                  className="hover:text-blue-600 transition-all duration-200"
+                  className="hover:text-[#006a4e] border-b-2 border-transparent hover:border-[#ffce00] transition-all duration-200 pb-1"
                 >
                   {link.name}
                 </Link>
@@ -35,16 +37,16 @@ export default function Navbar() {
           })}
         </ul>
 
-        {/* Actions */}
+        {/* Actions - Bouton Rouge (Rappel de l'étoile) */}
         <div className="flex items-center gap-3">
-          <button className="hidden md:flex items-center gap-2 bg-blue-600 text-white px-5 py-2.5 rounded-xl hover:bg-blue-700 transition-all cursor-pointer font-medium">
+          <button className="hidden md:flex items-center gap-2 bg-[#d21034] text-white px-5 py-2.5 rounded-xl hover:bg-red-700 transition-all cursor-pointer font-bold shadow-md shadow-red-100">
             <LogIn size={18} />
             Connexion
           </button>
 
-          {/* Bouton Burger Mobile avec Lucide */}
+          {/* Bouton Burger Mobile */}
           <button 
-            className="md:hidden p-2 text-gray-600 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
+            className="md:hidden p-2 text-[#006a4e] hover:bg-gray-100 rounded-lg cursor-pointer"
             onClick={function() { setIsOpen(!isOpen); }}
           >
             {isOpen ? <X size={28} /> : <Menu size={28} />}
@@ -52,16 +54,17 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Menu Mobile avec animation simple */}
+      {/* Menu Mobile */}
       {isOpen && (
-        <div className="md:hidden absolute top-full left-0 w-full bg-white border-b border-gray-200 z-50 shadow-2xl animate-in fade-in slide-in-from-top-2">
-          <ul className="flex flex-col p-6 gap-4 text-gray-800 font-bold">
-            {navLinks.map(function(link) {
+        <div className="md:hidden absolute top-full left-0 w-full bg-white border-b-8 border-[#ffce00] z-50 shadow-2xl">
+          <ul className="flex flex-col p-6 gap-2">
+            {navLinks.map(function(link, index) {
               return (
                 <li key={link.path}>
                   <Link 
                     to={link.path} 
-                    className="block text-xl py-2 active:text-blue-600"
+                    // Alternance de couleurs vert/jaune sur les textes mobiles
+                    className={`block text-xl py-3 px-4 rounded-xl font-black ${index % 2 === 0 ? 'text-[#006a4e]' : 'text-gray-800'}`}
                     onClick={function() { setIsOpen(false); }}
                   >
                     {link.name}
@@ -69,7 +72,11 @@ export default function Navbar() {
                 </li>
               );
             })}
-            
+            <div className="h-px bg-gray-100 my-2"></div>
+            <button className="w-full flex justify-center items-center gap-2 bg-[#d21034] text-white px-4 py-4 rounded-xl font-black">
+              <LogIn size={20} />
+              Se connecter
+            </button>
           </ul>
         </div>
       )}
