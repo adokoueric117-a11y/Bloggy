@@ -11,7 +11,7 @@ import os
 import sys
 
 # Chemin précis vers le dossier qui contient manage.py
-path = 'C:\Users\HP\Desktop\Bloggy\backend'
+path = '/home/smileypy/https://github.com/adokoueric117-a11y/Bloggy.git/backend'
 if path not in sys.path:
     sys.path.append(path)
 
