@@ -8,9 +8,17 @@ https://docs.djangoproject.com/en/6.0/howto/deployment/wsgi/
 """
 
 import os
+import sys
+
+# Chemin précis vers le dossier qui contient manage.py
+path = 'C:\Users\HP\Desktop\Bloggy\backend'
+if path not in sys.path:
+    sys.path.append(path)
+
+os.environ['DJANGO_SETTINGS_MODULE'] = 'bloggy.settings'
 
 from django.core.wsgi import get_wsgi_application
 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'bloggy.settings')
 
-app = application = get_wsgi_application()
+application = get_wsgi_application()
