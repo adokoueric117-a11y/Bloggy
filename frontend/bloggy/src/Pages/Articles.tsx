@@ -18,7 +18,7 @@ export default function Articles() {
 
   useEffect(function() {
     setLoading(true);
-    fetch('https://Smileypy.pythonanywhere.com/api/articles/')
+    fetch('https://smileypy.pythonanywhere.com/api/articles/')
       .then(res => res.json())
       .then(function(data) {
         const trie = data.sort(function(a: Article, b: Article) {
